@@ -15,14 +15,15 @@ const Applicants = () => {
     useEffect(() => {
         const fetchAllApplicants = async () => {
             try {
-                const res = await axios.get(`${"https://job-portal-c56w.onrender.com"}/${params.id}/applicants`, { withCredentials: true });
+                const res = await axios.get(`https://job-portal-c56w.onrender.com/api/v1/application/${params.id}/applicants`, { withCredentials: true });
                 dispatch(setAllApplicants(res.data.job));
             } catch (error) {
                 console.log(error);
             }
         }
         fetchAllApplicants();
-    }, []);
+    }, [dispatch, params.id]); // dependencies updated
+
     return (
         <div>
             <Navbar />

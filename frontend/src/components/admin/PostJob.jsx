@@ -6,12 +6,12 @@ import { Button } from '../ui/button'
 import { useSelector } from 'react-redux'
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '../ui/select'
 import axios from 'axios'
-import { JOB_API_END_POINT } from '@/utils/constant'
+// import { JOB_API_END_POINT } from '@/utils/constant' // <-- Remove if not used
 import { toast } from 'sonner'
 import { useNavigate } from 'react-router-dom'
 import { Loader2 } from 'lucide-react'
 
-const companyArray = [];
+// const companyArray = []; // <-- Remove if not used
 
 const PostJob = () => {
     const [input, setInput] = useState({
@@ -42,7 +42,7 @@ const PostJob = () => {
         e.preventDefault();
         try {
             setLoading(true);
-            const res = await axios.post(`${"https://job-portal-c56w.onrender.com"}/post`, input,{
+            const res = await axios.post(`https://job-portal-c56w.onrender.com/api/v1/job/post`, input, {
                 headers:{
                     'Content-Type':'application/json'
                 },
@@ -156,7 +156,7 @@ const PostJob = () => {
                                             {
                                                 companies.map((company) => {
                                                     return (
-                                                        <SelectItem value={company?.name?.toLowerCase()}>{company.name}</SelectItem>
+                                                        <SelectItem value={company?.name?.toLowerCase()} key={company._id}>{company.name}</SelectItem>
                                                     )
                                                 })
                                             }
