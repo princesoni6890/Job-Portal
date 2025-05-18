@@ -46,12 +46,12 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
         }
         try {
             setLoading(true);
-            const res = await axios.post(`https://job-portal-c56w.onrender.com/api/v1/user/profile/update`, formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                },
-                withCredentials: true
-            });
+           const res = await axios.post(`https://job-portal-c56w.onrender.com/api/v1/user/profile/update`, formData, {
+    headers: {
+        'Content-Type': 'multipart/form-data'
+    },
+    withCredentials: true
+});
             if (res.data.success) {
                 dispatch(setUser(res.data.user));
                 toast.success(res.data.message);
@@ -65,6 +65,8 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
         setOpen(false);
         console.log(input);
     }
+
+
 
     return (
         <div>

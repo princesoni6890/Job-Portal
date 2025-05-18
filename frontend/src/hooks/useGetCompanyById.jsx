@@ -1,5 +1,5 @@
 import { setSingleCompany } from '@/redux/companySlice'
-// Removed unused import: import { setAllJobs } from '@/redux/jobSlice'
+import { setAllJobs } from '@/redux/jobSlice'
 import { COMPANY_API_END_POINT, JOB_API_END_POINT } from '@/utils/constant'
 import axios from 'axios'
 import { useEffect } from 'react'
@@ -10,7 +10,7 @@ const useGetCompanyById = (companyId) => {
     useEffect(()=>{
         const fetchSingleCompany = async () => {
             try {
-                const res = await axios.get(`https://job-portal-c56w.onrender.com/get/${companyId}`,{withCredentials:true});
+ const res = await axios.get(`https://job-portal-c56w.onrender.com/api/v1/company/get/${companyId}`,{withCredentials:true});
                 console.log(res.data.company);
                 if(res.data.success){
                     dispatch(setSingleCompany(res.data.company));
